@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function openWhatsApp() {
+            var communityLink = "https://chat.whatsapp.com/IYNBY8XWCQR9hP4kAF2dw8";
+            
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            
+            if (/android/i.test(userAgent)) {
+                window.location.href = "intent://chat.whatsapp.com/IYNBY8XWCQR9hP4kAF2dw8#Intent;scheme=https;package=com.whatsapp;end;";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "whatsapp://chat?code=IYNBY8XWCQR9hP4kAF2dw8";
+            } else {
+                window.location.href = communityLink;
+            }
+        }
+    </script>
+</head>
+<body onload="openWhatsApp()">
+</body>
+</html>
