@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join WhatsApp Community</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1207450461176569');
+fbq('track', 'PageViewD');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1207450461176569&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .community-card {
+      background-color: #ffffff;
+      max-width: 400px;
+      width: 90%;
+      border-radius: 20px;
+      padding: 30px 20px 25px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin-bottom: 18px;
+    }
+
+    .community-name {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 8px;
+      color: #1c1c1c;
+    }
+
+    .community-meta {
+      font-size: 14px;
+      color: #6a6a6a;
+      text-align: center;
+    }
+
+    .community-desc {
+      width: 77%;
+      font-size: 15px;
+      font-weight: 600;
+      color: #3b3b3b;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      white-space: pre-line;
+      text-align: left;
+    }
+
+    .join-btn {
+      padding: 13px 24px;
+      background-color: #25D366;
+      border: none;
+      border-radius: 30px;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .join-btn:hover {
+      background-color: #1eb85c;
+    }
+
+    @media (max-width: 480px) {
+      .community-card {
+        padding: 24px 16px;
+      }
+
+      .logo {
+        width: 72px;
+        height: 72px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="community-card">
+    <img src="/WhatsApp Image 2024-07-30 at 17.14.50_c141bc01.jpg" alt="Community Logo" class="logo" />
+    <div class="community-name">Zero Investment Work</div>
+    <div class="community-meta">Community • 1 group</div>
+    <div class="community-desc">
+❌ Leave = No Re-entry!
+💸 Earn ₹2K+ Daily – Zero Investment
+🚫 No Affiliate | No MLM | No Course Selling 
+🎙 Want to Know HOW? Join Our Exclusive Webinar!
+⚠ Miss It = Miss Out Forever!
+    </div>
+    <a class="join-btn"
+   href="#"
+   onclick="return handleJoinClick();">
+   Join Community
+</a>
+
+
+  </div>
+  <script>
+    function handleJoinClick() {
+      fbq && fbq('track', 'JoinedCMTD');
+  
+      const androidIntent = "intent://chat.whatsapp.com/HPhI0WAJXby580CXyjaMiQM#Intent;package=com.whatsapp;scheme=https;end";
+      const universalLink = "https://chat.whatsapp.com/HPhI0WAJXby580CXyjaMiQM";
+      const iosLink = "whatsapp://chat?code=HPhI0WAJXby580CXyjaMiQM"
+  
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isAndroid = /android/i.test(userAgent);
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+      const isWindows = /Windows/i.test(userAgent);
+  
+      if (isAndroid) {
+      window.location.href = androidIntent;
+    }
+    // Handle iOS: Use intent to open WhatsApp app directly, else fallback to universal link
+    else if (isIOS) {
+      window.location.href = iosLink;
+
+      // Fallback: If iOS intent doesn't open WhatsApp, use the universal link
+      setTimeout(function() {
+        window.location.href = universalLink;
+      }, 10000); // Try universal link after 1 second
+    }
+    // Handle Windows or others (Desktop): Use WhatsApp Web or Desktop app link
+    else if (isWindows) {
+      window.location.href = iosLink;
+
+      // Fallback: If Windows intent doesn't open WhatsApp, use the universal link
+      setTimeout(function() {
+        window.location.href = universalLink;
+      }, 10000); // Try universal link after 1 second
+    }
+    // Default fallback: Use the universal WhatsApp link for other browsers
+    else {
+      window.location.href = universalLink;
+    }
+  
+      return false; // Prevent default <a> click
+    }
+  </script>
+</body>
+</html>
