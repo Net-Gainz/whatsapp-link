@@ -23,8 +23,12 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
-  <script src="config.js"></script> <!-- load community config -->
-
+<script>
+  // Dynamically load config.js with a timestamp to avoid cache
+  var script = document.createElement("script");
+  script.src = "config.js?v=" + new Date().getTime();
+  document.head.appendChild(script);
+</script>
   <style>
     body {
       margin: 0;
@@ -153,4 +157,5 @@
   </script>
 </body>
 </html>
+
 
