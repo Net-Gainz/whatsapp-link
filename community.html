@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join WhatsApp Community</title>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1207450461176569');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1207450461176569&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4023051041242836');
+    fbq('track', 'DPageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=4023051041242836&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script src="config.js"></script> <!-- load community config -->
 
   <style>
     body {
@@ -95,17 +97,6 @@ src="https://www.facebook.com/tr?id=1207450461176569&ev=PageView&noscript=1"
     .join-btn:hover {
       background-color: #1eb85c;
     }
-
-    @media (max-width: 480px) {
-      .community-card {
-        padding: 24px 16px;
-      }
-
-      .logo {
-        width: 72px;
-        height: 72px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -119,59 +110,46 @@ src="https://www.facebook.com/tr?id=1207450461176569&ev=PageView&noscript=1"
 💸 Earn ₹2K+ Daily – Zero Investment
 🚫 No Affiliate | No MLM | No Course Selling 
 🎙 Want to Know HOW? Join Our Exclusive Webinar!
-⚠ Miss It = Miss Out Forever!
+⚠ Miss It = Miss Out Forever!
     </div>
-    <a class="join-btn"
-   href="#"
-   onclick="return handleJoinClick();">
-   Join Community
-</a>
-
-
+    <a class="join-btn" href="#" onclick="return handleJoinClick();">Join Community</a>
   </div>
+
   <script>
+    function getParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
     function handleJoinClick() {
-      fbq && fbq('track', 'JoinedCMT');
-  
-      const androidIntent = "intent://chat.whatsapp.com/JAGOfXsG6PG07hwDLm7N11#Intent;package=com.whatsapp;scheme=https;end";
-      const universalLink = "https://chat.whatsapp.com/JAGOfXsG6PG07hwDLm7N11";
-      const iosLink = "whatsapp://chat?code=JAGOfXsG6PG07hwDLm7N11"
-  
+      fbq && fbq('track', 'JoinedCMTD');
+
+      // get ID from config.js based on utm_ad
+      const adKey = getParam("utm_ad");
+      const communityId = communityConfig[adKey] || communityConfig.default;
+
+      const androidIntent = `intent://chat.whatsapp.com/${communityId}#Intent;package=com.whatsapp;scheme=https;end`;
+      const universalLink = `https://chat.whatsapp.com/${communityId}`;
+      const iosLink = `whatsapp://chat?code=${communityId}`;
+
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
       const isAndroid = /android/i.test(userAgent);
       const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
       const isWindows = /Windows/i.test(userAgent);
-  
+
       if (isAndroid) {
-      window.location.href = androidIntent;
-    }
-    // Handle iOS: Use intent to open WhatsApp app directly, else fallback to universal link
-    else if (isIOS) {
-      window.location.href = iosLink;
-
-      // Fallback: If iOS intent doesn't open WhatsApp, use the universal link
-      setTimeout(function() {
+        window.location.href = androidIntent;
+      } else if (isIOS) {
+        window.location.href = iosLink;
+        setTimeout(() => { window.location.href = universalLink; }, 1000);
+      } else if (isWindows) {
         window.location.href = universalLink;
-      }, 10000); // Try universal link after 1 second
-    }
-    // Handle Windows or others (Desktop): Use WhatsApp Web or Desktop app link
-    else if (isWindows) {
-      window.location.href = iosLink;
-
-      // Fallback: If Windows intent doesn't open WhatsApp, use the universal link
-      setTimeout(function() {
+      } else {
         window.location.href = universalLink;
-      }, 10000); // Try universal link after 1 second
-    }
-    // Default fallback: Use the universal WhatsApp link for other browsers
-    else {
-      window.location.href = universalLink;
-    }
-  
-      return false; // Prevent default <a> click
+      }
+
+      return false; // prevent default <a>
     }
   </script>
 </body>
 </html>
-
-
